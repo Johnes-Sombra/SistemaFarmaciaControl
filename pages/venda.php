@@ -4,6 +4,7 @@ require_once '../includes/header.php';
 ?>
 
 <div class="container mt-4">
+    <div id="mensagem" class="alert" style="display: none;"></div>
     <div class="row">
         <!-- Lado Esquerdo - Pesquisa e Lista de Medicamentos -->
         <div class="col-md-5">
@@ -90,8 +91,8 @@ $(document).ready(function() {
         });
     });
 
-    // Seleção de medicamento
-    $("#listaMedicamentos a").click(function(e) {
+    // Seleção de medicamento (usando delegação de eventos)
+    $("#listaMedicamentos").on("click", "a", function(e) {
         e.preventDefault();
         $("#medicamentoId").val($(this).data("id"));
         $("#medicamentoNome").val($(this).data("nome"));
@@ -101,34 +102,79 @@ $(document).ready(function() {
         calcularTotal();
     });
 
-    // Cálculo do total
-    $("#quantidade").on("input", function() {
+    // Calcular total ao mudar quantidade
+    $("#quantidade").on("change keyup", function() {
         calcularTotal();
     });
 
     function calcularTotal() {
-        var quantidade = $("#quantidade").val();
-        var preco = $("#precoUnitario").val();
-        var total = quantidade * preco;
-        $("#total").val(total.toFixed(2));
+        var quantidade = parseInt($("#quantidade").val()) || 0;
+        var precoUnitario = parseFloat($("#precoUnitario").val()) || 0;
+        var estoque = parseInt($("#quantidadeEstoque").val()) || 0;
+
+        if (quantidade > estoque) {
+            $("#quantidade").val(estoque);
+            quantidade = estoque;
+            mostrarMensagem("Quantidade ajustada para o máximo disponível em estoque", "warning");
+        }
+
+        $("#total").val((quantidade * precoUnitario).toFixed(2));
     }
 
-    // Cancelar venda
+    // Botão Cancelar
     $("#btnCancelar").click(function() {
         $("#formVenda")[0].reset();
+        $("#medicamentoId").val("");
         $("#total").val("");
+        mostrarMensagem("", ""); // Limpa mensagens
     });
 
-    // Validação do formulário
+    // Envio do formulário
     $("#formVenda").submit(function(e) {
-        var quantidade = parseInt($("#quantidade").val());
-        var estoque = parseInt($("#quantidadeEstoque").val());
+        e.preventDefault();
         
-        if (quantidade > estoque) {
-            e.preventDefault();
-            alert("Quantidade solicitada maior que o estoque disponível!");
+        if (!$("#medicamentoId").val()) {
+            mostrarMensagem("Selecione um medicamento", "danger");
+            return;
         }
+
+        $.ajax({
+            url: "processar_venda.php",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.success) {
+                    mostrarMensagem(response.message, "success");
+                    $("#formVenda")[0].reset();
+                    $("#medicamentoId").val("");
+                    $("#total").val("");
+                    
+                    // Atualizar a lista de medicamentos
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    mostrarMensagem(response.message, "danger");
+                }
+            },
+            error: function() {
+                mostrarMensagem("Erro ao processar a venda", "danger");
+            }
+        });
     });
+
+    function mostrarMensagem(texto, tipo) {
+        if (texto) {
+            $("#mensagem")
+                .removeClass()
+                .addClass("alert alert-" + tipo)
+                .html(texto)
+                .show();
+        } else {
+            $("#mensagem").hide();
+        }
+    }
 });
 </script>
 
