@@ -66,7 +66,10 @@ require_once '../includes/header.php';
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-check"></i> Registrar Venda
                             </button>
-                            <button type="button" class="btn btn-secondary" id="btnCancelar">
+                            <a href="../index.php" class="btn btn-secondary">
+                                <i class="fas fa-home"></i> Início
+                            </a>
+                            <button type="button" class="btn btn-danger" id="btnCancelar">
                                 <i class="fas fa-times"></i> Cancelar Venda
                             </button>
                         </div>
