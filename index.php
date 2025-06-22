@@ -92,22 +92,22 @@ require_once 'includes/header.php';
     <!-- Botões de Ação -->
     <div class="row mt-4">
         <div class="col-md-3 mb-3">
-            <a href="/vendas.php" class="btn btn-primary w-100">
+            <a href="pages/venda.php" class="btn btn-primary w-100">
                 <i class="fas fa-shopping-cart"></i> Nova Venda
             </a>
         </div>
         <div class="col-md-3 mb-3">
-            <a href="/medicamentos.php" class="btn btn-success w-100">
-                <i class="fas fa-pills"></i> Cadastrar Remédio
+            <a href="pages/cadastro_medicamento.php" class="btn btn-success w-100">
+                <i class="fas fa-pills"></i> Cadastrar Medicamento
             </a>
         </div>
         <div class="col-md-3 mb-3">
-            <a href="/laboratorios.php" class="btn btn-info w-100">
-                <i class="fas fa-industry"></i> Cadastrar Laboratório
+            <a href="pages/cadastro_laboratorio.php" class="btn btn-info w-100">
+                <i class="fas fa-flask"></i> Cadastrar Laboratório
             </a>
         </div>
         <div class="col-md-3 mb-3">
-            <a href="/fornecedores.php" class="btn btn-warning w-100">
+            <a href="pages/cadastro_fornecedor.php" class="btn btn-warning w-100">
                 <i class="fas fa-truck"></i> Cadastrar Fornecedor
             </a>
         </div>
