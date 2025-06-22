@@ -78,7 +78,7 @@ $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar Medicamento</button>
-        <a href="index.php" class="btn btn-secondary">Voltar</a>
+        <a href="../index.php" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
 
