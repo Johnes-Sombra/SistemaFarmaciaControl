@@ -54,7 +54,7 @@ require_once '../includes/header.php';
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar Laboratório</button>
-        <a href="index.php" class="btn btn-secondary">Voltar</a>
+        <a href="../index.php" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
 
