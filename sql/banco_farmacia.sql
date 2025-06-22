@@ -9,6 +9,7 @@ CREATE TABLE laboratorios (
     cnpj VARCHAR(18) UNIQUE,
     telefone VARCHAR(15),
     email VARCHAR(100),
+    endereco TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
