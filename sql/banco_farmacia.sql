@@ -21,6 +21,8 @@ CREATE TABLE fornecedores (
     telefone VARCHAR(15),
     email VARCHAR(100),
     endereco TEXT,
+    contato VARCHAR(100),
+    prazo_entrega INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -35,6 +37,7 @@ CREATE TABLE medicamentos (
     preco_venda DECIMAL(10,2),
     quantidade_estoque INT DEFAULT 0,
     quantidade_minima INT DEFAULT 10,
+    data_validade DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (laboratorio_id) REFERENCES laboratorios(id),
     FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)
