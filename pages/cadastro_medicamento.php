@@ -1,17 +1,20 @@
 <?php
+// Inclui arquivos necessários para conexão com banco de dados e cabeçalho da página
 require_once '../config/database.php';
 require_once '../includes/header.php';
 
-// Buscar laboratórios para o select
+// Busca todos os laboratórios cadastrados para popular o select
 $stmt = $conn->query("SELECT id, nome FROM laboratorios ORDER BY nome");
 $laboratorios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Buscar fornecedores para o select
+// Busca todos os fornecedores cadastrados para popular o select
 $stmt = $conn->query("SELECT id, nome FROM fornecedores ORDER BY nome");
 $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!-- Container principal do formulário de cadastro -->
 <div class="container mt-4">
+    <!-- Exibe mensagem de sucesso se o cadastro foi realizado -->
     <?php if (isset($_GET['success'])): ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         Medicamento cadastrado com sucesso!
@@ -19,6 +22,7 @@ $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <?php endif; ?>
 
+    <!-- Exibe mensagem de erro se houver falha no cadastro -->
     <?php if (isset($_GET['error'])): ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <?php echo htmlspecialchars($_GET['error']); ?>

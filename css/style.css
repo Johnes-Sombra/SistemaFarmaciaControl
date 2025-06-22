@@ -1,101 +1,112 @@
-/* Estilos Gerais */
+/* Configurações Globais do Layout */
+/* Define a estrutura básica da página para garantir que o footer fique sempre na base */
 html {
     position: relative;
     min-height: 100%;
 }
 
+/* Estilo do corpo da página */
+/* Define a cor de fundo e margem inferior para acomodar o footer */
 body {
-    background-color: #f8f9fa;
-    margin-bottom: 60px; /* Altura do footer */
+    background-color: #f8f9fa;  /* Cor de fundo clara para melhor legibilidade */
+    margin-bottom: 60px;         /* Espaço para o footer fixo */
 }
 
-/* Footer */
+/* Configuração do Footer */
+/* Posicionamento fixo na base da página */
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* Altura do footer */
-    background-color: #343a40;
+    position: absolute;          /* Posicionamento absoluto em relação ao html */
+    bottom: 0;                   /* Alinha na base da página */
+    width: 100%;                 /* Ocupa toda a largura disponível */
+    height: 60px;                /* Altura fixa do footer */
+    background-color: #343a40;   /* Cor de fundo escura para contraste */
 }
 
-/* Ajuste do padding do footer */
+/* Ajustes de Espaçamento do Footer */
 footer .container {
-    padding: 15px 0;
+    padding: 15px 0;             /* Espaçamento interno vertical */
 }
 
-/* Conteúdo Principal */
+/* Layout Flexbox para Conteúdo Principal */
+/* Garante que o conteúdo ocupe o espaço disponível */
 .container {
-    flex: 1 0 auto;
+    flex: 1 0 auto;              /* Permite que o container cresça mas não encolha */
 }
 
-/* Footer */
+/* Configurações Adicionais do Footer */
 footer {
-    flex-shrink: 0;
-    width: 100%;
-    margin-top: auto;
+    flex-shrink: 0;              /* Impede que o footer encolha */
+    width: 100%;                 /* Largura total */
+    margin-top: auto;            /* Margem superior automática para empurrar para baixo */
 }
 
-/* Navbar */
+/* Estilização da Barra de Navegação */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Sombra suave para destaque */
 }
 
 .navbar-brand {
-    font-weight: bold;
+    font-weight: bold;           /* Deixa o nome da marca em negrito */
 }
 
-/* Cards */
+/* Estilização dos Cards */
+/* Cards são usados para agrupar informações relacionadas */
 .card {
-    border: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    border: none;                /* Remove borda padrão */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Adiciona sombra suave */
+    transition: transform 0.2s;   /* Animação suave ao hover */
 }
 
+/* Efeito de elevação ao passar o mouse */
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);  /* Move o card 5px para cima */
 }
 
+/* Remove a borda inferior do cabeçalho do card */
 .card-header {
     border-bottom: none;
 }
 
-/* Botões de Ação */
+/* Estilização dos Botões */
 .btn {
-    padding: 12px 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s;
+    padding: 12px 20px;           /* Espaçamento interno */
+    font-weight: 500;             /* Peso da fonte semi-bold */
+    text-transform: uppercase;     /* Texto em maiúsculas */
+    letter-spacing: 0.5px;        /* Espaçamento entre letras */
+    transition: all 0.3s;         /* Animação suave para todos os efeitos */
 }
 
+/* Efeito hover nos botões */
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);   /* Elevação suave */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra ao passar o mouse */
 }
 
+/* Espaçamento entre ícone e texto no botão */
 .btn i {
-    margin-right: 8px;
+    margin-right: 8px;            /* Espaço entre ícone e texto */
 }
 
-/* Tabelas */
+/* Estilização das Tabelas */
 .table {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: white;       /* Fundo branco para contraste */
+    border-radius: 8px;            /* Bordas arredondadas */
+    overflow: hidden;              /* Esconde overflow nas bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Sombra suave */
 }
 
+/* Cabeçalho da tabela */
 .table thead th {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-    font-weight: 600;
+    background-color: #f8f9fa;     /* Fundo claro para o cabeçalho */
+    border-bottom: 2px solid #dee2e6;  /* Linha separadora */
+    font-weight: 600;              /* Texto semi-bold */
 }
 
-/* Formulários */
+/* Estilização dos Campos de Formulário */
 .form-control {
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
-    padding: 8px 12px;
+    border-radius: 4px;            /* Bordas arredondadas */
+    border: 1px solid #dee2e6;     /* Borda sutil */
+    padding: 8px 12px;             /* Espaçamento interno */
 }
 
 .form-control:focus {

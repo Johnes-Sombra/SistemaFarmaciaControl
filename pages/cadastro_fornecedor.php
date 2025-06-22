@@ -1,24 +1,30 @@
 <?php
+// Inclui os arquivos necessários para conexão com banco de dados e cabeçalho da página
 require_once '../config/database.php';
 require_once '../includes/header.php';
 ?>
 
+<!-- Container principal do formulário de cadastro -->
 <div class="container mt-4">
     <h2>Cadastro de Fornecedor</h2>
     
+    <!-- Exibe mensagem de sucesso se o cadastro foi realizado -->
     <?php if (isset($_GET['success'])): ?>
         <div class="alert alert-success" role="alert">
             Fornecedor cadastrado com sucesso!
         </div>
     <?php endif; ?>
 
+    <!-- Exibe mensagem de erro se houver falha no cadastro -->
     <?php if (isset($_GET['error'])): ?>
         <div class="alert alert-danger" role="alert">
-            <?php echo htmlspecialchars($_GET['error']); ?>
+            <?php echo htmlspecialchars($_GET['error']); // Evita XSS ?>
         </div>
     <?php endif; ?>
 
+    <!-- Formulário de cadastro com validação do Bootstrap -->
     <form action="processar_cadastro_fornecedor.php" method="POST" class="needs-validation" novalidate>
+        <!-- Campos para dados básicos do fornecedor -->
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="nome" class="form-label">Nome do Fornecedor</label>

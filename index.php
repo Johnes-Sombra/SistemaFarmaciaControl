@@ -1,11 +1,12 @@
 <?php
-require_once 'config/database.php';
-require_once 'includes/header.php';
+// Inclui os arquivos necessários para funcionamento da página
+require_once 'config/database.php';  // Conexão com o banco de dados
+require_once 'includes/header.php';   // Cabeçalho da página
 ?>
 
 <div class="container mt-4">
     <div class="row">
-        <!-- Painel Remédios Populares -->
+        <!-- Painel de Remédios Populares -->
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-header bg-primary text-white">
@@ -13,6 +14,8 @@ require_once 'includes/header.php';
                 </div>
                 <div class="card-body">
                     <?php
+                    // Consulta SQL para buscar os 5 medicamentos mais vendidos
+                    // Utiliza JOIN para relacionar medicamentos com itens de venda
                     $sql = "SELECT m.nome, COUNT(iv.id) as total_vendas 
                             FROM medicamentos m 
                             LEFT JOIN itens_venda iv ON m.id = iv.medicamento_id 
@@ -22,6 +25,7 @@ require_once 'includes/header.php';
                     $stmt = $conn->query($sql);
                     $remedios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                    // Loop para exibir cada medicamento com seu total de vendas
                     foreach ($remedios as $remedio) {
                         echo "<div class='d-flex justify-content-between align-items-center mb-2'>";
                         echo "<span>{$remedio['nome']}</span>";
@@ -33,7 +37,7 @@ require_once 'includes/header.php';
             </div>
         </div>
 
-        <!-- Painel Laboratórios Populares -->
+        <!-- Painel de Laboratórios Populares -->
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-header bg-success text-white">
@@ -62,7 +66,7 @@ require_once 'includes/header.php';
             </div>
         </div>
 
-        <!-- Painel Estoque Baixo -->
+        <!-- Painel de Estoque Baixo -->
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-header bg-danger text-white">
@@ -89,7 +93,7 @@ require_once 'includes/header.php';
         </div>
     </div>
 
-    <!-- Botões de Ação -->
+    <!-- Botões de Ação Rápida -->
     <div class="row mt-4">
         <div class="col-md-3 mb-3">
             <a href="pages/venda.php" class="btn btn-primary w-100">

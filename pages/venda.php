@@ -1,23 +1,30 @@
 <?php
+// Inclui os arquivos necessários para conexão com banco de dados e cabeçalho da página
 require_once '../config/database.php';
 require_once '../includes/header.php';
 ?>
 
+<!-- Container principal da página de vendas -->
 <div class="container mt-4">
+    <!-- Área para exibição de mensagens de feedback ao usuário -->
     <div id="mensagem" class="alert" style="display: none;"></div>
     <div class="row">
-        <!-- Lado Esquerdo - Pesquisa e Lista de Medicamentos -->
+        <!-- Seção esquerda - Lista de medicamentos disponíveis -->
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title mb-0">Pesquisar Medicamentos</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Campo de pesquisa para filtrar medicamentos -->
                     <input type="text" id="pesquisaMedicamento" class="form-control mb-3" placeholder="Digite o nome do medicamento...">
+                    <!-- Lista de medicamentos carregada do banco de dados -->
                     <div id="listaMedicamentos" class="list-group">
                         <?php
+                        // Consulta SQL para buscar todos os medicamentos ordenados por nome
                         $sql = "SELECT id, nome, preco_venda, quantidade_estoque FROM medicamentos ORDER BY nome";
                         $stmt = $conn->query($sql);
+                        // Loop para exibir cada medicamento como um item clicável
                         while ($row = $stmt->fetch()) {
                             echo "<a href='#' class='list-group-item list-group-item-action' 
                                     data-id='{$row['id']}' 
@@ -34,7 +41,7 @@ require_once '../includes/header.php';
             </div>
         </div>
 
-        <!-- Lado Direito - Formulário de Venda -->
+        <!-- Seção direita - Formulário de registro de venda -->
         <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
